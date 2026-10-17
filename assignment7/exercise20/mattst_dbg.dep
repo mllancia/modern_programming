@@ -1,0 +1,1 @@
+mattst.o: mattst.cc matrix.h

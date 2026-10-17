@@ -1,0 +1,14 @@
+01.01.2025 ok
+31.12.2025 ok
+31.11.2025 invalid date
+32.05.2025 invalid date
+00.01.2026 invalid date
+01.00.2026 invalid date
+01.13.2025 invalid date
+24.11.1 ok
+24.11.0 invalid date
+29.02.2000 ok
+29.02.2024 ok
+29.02.2025 invalid date
+29.02.2100 invalid date
+01.01.1970 ok

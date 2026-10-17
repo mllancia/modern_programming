@@ -1,0 +1,28 @@
+CXX = g++
+CXXFLAGS = -std=c++20
+
+PROGS = proga progb
+NUMS  = 1 2 3
+
+# Lista de todos os programas com números
+ALL_PROGS := $(foreach p,$(PROGS),$(foreach n,$(NUMS),$(p)-$(n)))
+
+all: $(ALL_PROGS)
+
+# Regras individuais para cada programa
+proga-1: proga.cc
+	$(CXX) $(CXXFLAGS) -DNUM=1 -o $@ $<
+proga-2: proga.cc
+	$(CXX) $(CXXFLAGS) -DNUM=2 -o $@ $<
+proga-3: proga.cc
+	$(CXX) $(CXXFLAGS) -DNUM=3 -o $@ $<
+progb-1: progb.cc
+	$(CXX) $(CXXFLAGS) -DNUM=1 -o $@ $<
+progb-2: progb.cc
+	$(CXX) $(CXXFLAGS) -DNUM=2 -o $@ $<
+progb-3: progb.cc
+	$(CXX) $(CXXFLAGS) -DNUM=3 -o $@ $<
+
+clean:
+	rm -f $(ALL_PROGS)
+

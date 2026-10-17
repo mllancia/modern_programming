@@ -1,0 +1,29 @@
+# Makefile
+# make aliases
+MCS = mcs 
+
+CONF  = mkbundle --cross default --machine-config /etc/mono/4.5/machine.config --config /etc/mono/config main.exe -o main
+
+CDLL = func.dll
+
+MAINCS  = main.cs
+
+MAINEXE	= main.exe
+
+MAIN	= main
+
+all: $(MAIN) # all will compile all files in bin. Which is just main
+
+%.dll: %.cs
+	$(MCS) -t:library $<
+
+%.exe: %.cs $(CDLL)
+	$(MCS) -r:$(CDLL) -out:$@ $<
+
+.SECONDARY: $(CDLL)
+
+$(MAIN): $(MAINEXE)
+	$(CONF) $(MAINEXE) -o $(MAIN)
+
+clean:
+	rm -f $(CDLL) $(MAINEXE) $(MAIN)
